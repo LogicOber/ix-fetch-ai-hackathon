@@ -70,8 +70,14 @@ export function useFilteredData({
       entry.deaths += item.deaths;
       entry.sevenDayAverage += item.sevenDayAverage;
       entry.deathsSevenDayAverage += item.deathsSevenDayAverage;
+      
+      // Only include selected hesitancy levels
       Object.entries(item.hesitancyBreakdown).forEach(([level, value]) => {
-        entry.hesitancyBreakdown[level as HesitancyLevel] = (entry.hesitancyBreakdown[level as HesitancyLevel] || 0) + value;
+        if (selectedHesitancy.includes(level as HesitancyLevel)) {
+          entry.hesitancyBreakdown[level as HesitancyLevel] = (entry.hesitancyBreakdown[level as HesitancyLevel] || 0) + value;
+        } else {
+          entry.hesitancyBreakdown[level as HesitancyLevel] = 0;
+        }
       });
     };
 
@@ -106,7 +112,7 @@ export function useFilteredData({
         date
       }))
       .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-  }, [selectedGenders, selectedAgeGroups]);
+  }, [selectedGenders, selectedAgeGroups, selectedHesitancy]);
 
   return {
     filteredMapData,

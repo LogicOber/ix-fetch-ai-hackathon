@@ -9,13 +9,17 @@ import { StackedBarChart } from '@/components/health-board/charts/StackedBarChar
 import { useFilteredData } from '@/hooks/useFilteredData';
 import { Activity } from 'lucide-react';
 import type { Region, VaccineType, Gender, AgeGroup, HesitancyLevel } from '@/types/health';
+import { hesitancyLevels } from '@/lib/mock-data';
 
 export default function HealthBoard() {
   const [selectedVaccines, setSelectedVaccines] = useState<VaccineType[]>([]);
   const [selectedRegion, setSelectedRegion] = useState<Region | null>(null);
-  const [selectedHesitancy, setSelectedHesitancy] = useState<HesitancyLevel[]>([]);
+  const [selectedHesitancy, setSelectedHesitancy] = useState<HesitancyLevel[]>([...hesitancyLevels]);
   const [selectedGenders, setSelectedGenders] = useState<Gender[]>([]);
   const [selectedAgeGroups, setSelectedAgeGroups] = useState<AgeGroup[]>([]);
+
+  // 检查是否应该禁用疫苗选择
+  const shouldDisableVaccines = selectedGenders.length > 0 || selectedAgeGroups.length > 0;
 
   const { filteredMapData, timeSeriesData, showTimeSeries } = useFilteredData({
     selectedRegion,
@@ -86,6 +90,7 @@ export default function HealthBoard() {
                       : [...prev, vaccine]
                   );
                 }}
+                disabled={shouldDisableVaccines}
               />
               <HesitancyPanel
                 selectedHesitancy={selectedHesitancy}

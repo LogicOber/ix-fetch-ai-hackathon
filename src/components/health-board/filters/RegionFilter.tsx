@@ -34,7 +34,9 @@ export function RegionFilter({ selectedRegion, onRegionSelect }: RegionFilterPro
               onSelect={() => onRegionSelect(null)}
               className={cn(
                 "cursor-pointer",
-                selectedRegion === null && "bg-primary/10"
+                !selectedRegion 
+                  ? "bg-[#006AF5] text-white hover:bg-[#006AF5] hover:text-white"
+                  : "hover:bg-[#A0C5FF] hover:text-foreground"
               )}
             >
               All Regions
@@ -46,7 +48,9 @@ export function RegionFilter({ selectedRegion, onRegionSelect }: RegionFilterPro
                 onSelect={() => onRegionSelect(region)}
                 className={cn(
                   "cursor-pointer",
-                  selectedRegion === region && "bg-primary/10"
+                  selectedRegion === region 
+                    ? "bg-[#006AF5] text-white hover:bg-[#006AF5] hover:text-white"
+                    : "hover:bg-[#A0C5FF] hover:text-foreground"
                 )}
               >
                 {region}

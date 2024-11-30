@@ -6,6 +6,24 @@ import { Card } from '@/components/ui/card';
 import englandGeoJson from '@/lib/england.json';
 import { HESITANCY_COLORS } from '@/lib/constants';
 
+interface GeoJSONFeature {
+  type: 'Feature';
+  properties: {
+    name: string;
+    code: string;
+    region: string;
+  };
+  geometry: {
+    type: string;
+    coordinates: number[][][];
+  };
+}
+
+interface EnglandGeoJSON {
+  type: 'FeatureCollection';
+  features: GeoJSONFeature[];
+}
+
 interface MapControllerProps {
   selectedRegion: Region | null;
   data: VaccinationData[];
@@ -65,7 +83,7 @@ export function VaccinationMap({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <GeoJSON
-          data={englandGeoJson as any}
+          data={englandGeoJson as EnglandGeoJSON}
           style={{
             fillColor: 'transparent',
             weight: 1.5,

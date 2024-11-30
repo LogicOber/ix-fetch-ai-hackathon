@@ -1,11 +1,21 @@
-import { Activity, BarChart2, Users, Settings } from "lucide-react";
+import { Activity, BarChart2, BookOpen, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router-dom";
+import { LucideIcon } from 'lucide-react';
 
-const navigation = [
+type NavigationItem = {
+  name: string;
+  href?: string;
+  icon?: LucideIcon;
+  type?: 'divider';
+};
+
+const navigation: NavigationItem[] = [
+  { type: "divider", name: "AI Analysis Dashboard" },
   { name: "Health Board", href: "/health-board", icon: Activity },
   { name: "Social Media Analysis", href: "/social-media-analysis", icon: BarChart2 },
-  { name: "Users", href: "/users", icon: Users },
+  { type: "divider", name: "Strategy Tools" },
+  { name: "Story Strategy", href: "/story-strategy", icon: BookOpen },
   { name: "Settings", href: "/settings", icon: Settings },
 ];
 
@@ -22,23 +32,34 @@ export function Sidebar() {
           </div>
         </div>
         <nav className="flex-1 p-2">
-          {navigation.map((item) => {
-            const Icon = item.icon;
-            return (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={cn(
-                  "flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg mb-1 w-full",
-                  location.pathname === item.href
-                    ? "bg-primary text-white"
-                    : "text-gray-700 hover:bg-primary/10"
-                )}
-              >
-                <Icon className="h-5 w-5" />
-                {item.name}
-              </Link>
-            );
+          {navigation.map((item, index) => {
+            if (item.type === "divider") {
+              return (
+                <div key={index} className="flex items-center px-4 py-3 text-base font-bold text-blue-600">
+                  {item.name}
+                </div>
+              );
+            }
+
+            if (item.href && item.icon) {
+              const Icon = item.icon;
+              return (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={cn(
+                    "flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg mb-1 w-full",
+                    location.pathname === item.href
+                      ? "bg-primary text-white"
+                      : "text-gray-700 hover:bg-primary/10"
+                  )}
+                >
+                  <Icon className="h-5 w-5" />
+                  {item.name}
+                </Link>
+              );
+            }
+            return null;
           })}
         </nav>
       </div>

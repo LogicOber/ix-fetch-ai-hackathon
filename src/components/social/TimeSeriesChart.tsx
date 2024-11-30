@@ -8,7 +8,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-import { Card } from "@/components/ui/card";
 import type { TimeSeriesMetrics, TimeRange } from '@/types/social';
 
 interface TimeSeriesChartProps {
@@ -16,8 +15,17 @@ interface TimeSeriesChartProps {
   timeRange: TimeRange;
 }
 
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: {
+    value: number;
+  }[];
+  label?: string;
+}
+
 export function TimeSeriesChart({ data, timeRange }: TimeSeriesChartProps) {
-  const formatDate = (date: string) => {
+  const formatDate = (date: string | undefined) => {
+    if (!date) return '';
     const d = new Date(date);
     switch (timeRange) {
       case 'week':
@@ -29,7 +37,7 @@ export function TimeSeriesChart({ data, timeRange }: TimeSeriesChartProps) {
     }
   };
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
     if (active && payload && payload.length) {
       const positiveValue = payload[0].value;
       const negativeValue = payload[1].value;
@@ -37,7 +45,7 @@ export function TimeSeriesChart({ data, timeRange }: TimeSeriesChartProps) {
 
       return (
         <div className="bg-white p-4 rounded-lg shadow-lg border border-primary">
-          <p className="font-medium text-primary mb-2">{formatDate(label)}</p>
+          <p className="font-medium text-primary mb-2">{label ? formatDate(label) : ''}</p>
           <div className="space-y-2">
             <div className="flex items-center justify-between gap-4">
               <span className="text-sm font-medium text-green-600">Positive:</span>
@@ -61,9 +69,9 @@ export function TimeSeriesChart({ data, timeRange }: TimeSeriesChartProps) {
   };
 
   return (
-    <Card className="p-6">
+    <div className="bg-white rounded-xl border-2 border-primary/30 p-6">
       <div className="h-[400px]">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height={400}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis 
@@ -117,6 +125,6 @@ export function TimeSeriesChart({ data, timeRange }: TimeSeriesChartProps) {
           </LineChart>
         </ResponsiveContainer>
       </div>
-    </Card>
+    </div>
   );
 }

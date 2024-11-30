@@ -2,42 +2,42 @@ import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import { AlertTriangle } from "lucide-react";
-import { hesitancyLevels } from "@/lib/mock-data";
-import type { HesitancyLevel } from "@/types/health";
+import { Users } from "lucide-react";
+import { genders } from "@/lib/mock-data";
+import type { Gender } from "@/types/health";
 
-interface HesitancyPanelProps {
-  selectedHesitancy: HesitancyLevel[];
-  onHesitancyToggle: (hesitancy: HesitancyLevel) => void;
+interface GenderFilterProps {
+  selectedGenders: Gender[];
+  onGenderToggle: (gender: Gender) => void;
   onClear: () => void;
 }
 
-export function HesitancyPanel({ selectedHesitancy, onHesitancyToggle, onClear }: HesitancyPanelProps) {
+export function GenderFilter({ selectedGenders, onGenderToggle, onClear }: GenderFilterProps) {
   return (
     <Card className="relative p-4 space-y-4 rounded-lg border-[1.5px] border-primary/30">
       <div className="flex items-center gap-3">
-        <AlertTriangle className="h-5 w-5 text-primary" />
-        <h2 className="text-2xl font-semibold text-primary">Vaccine Hesitancy</h2>
+        <Users className="h-5 w-5 text-primary" />
+        <h2 className="text-2xl font-semibold text-primary">Gender</h2>
       </div>
       <div className="space-y-3">
-        {hesitancyLevels.map((level) => (
-          <div key={level} className="flex items-center space-x-3">
+        {genders.map((gender) => (
+          <div key={gender} className="flex items-center space-x-3">
             <Checkbox
-              id={level}
-              checked={selectedHesitancy.includes(level)}
-              onCheckedChange={() => onHesitancyToggle(level)}
+              id={`gender-${gender}`}
+              checked={selectedGenders.includes(gender)}
+              onCheckedChange={() => onGenderToggle(gender)}
               className="medical-checkbox"
             />
-            <Label 
-              htmlFor={level} 
+            <Label
+              htmlFor={`gender-${gender}`}
               className="text-base font-medium"
             >
-              {level}
+              {gender}
             </Label>
           </div>
         ))}
       </div>
-      {selectedHesitancy.length > 0 && (
+      {selectedGenders.length > 0 && (
         <Button
           variant="secondary"
           size="sm"

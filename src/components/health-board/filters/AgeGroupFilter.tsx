@@ -2,42 +2,42 @@ import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import { AlertTriangle } from "lucide-react";
-import { hesitancyLevels } from "@/lib/mock-data";
-import type { HesitancyLevel } from "@/types/health";
+import { Clock } from "lucide-react";
+import { ageGroups } from "@/lib/mock-data";
+import type { AgeGroup } from "@/types/health";
 
-interface HesitancyPanelProps {
-  selectedHesitancy: HesitancyLevel[];
-  onHesitancyToggle: (hesitancy: HesitancyLevel) => void;
+interface AgeGroupFilterProps {
+  selectedAgeGroups: AgeGroup[];
+  onAgeGroupToggle: (ageGroup: AgeGroup) => void;
   onClear: () => void;
 }
 
-export function HesitancyPanel({ selectedHesitancy, onHesitancyToggle, onClear }: HesitancyPanelProps) {
+export function AgeGroupFilter({ selectedAgeGroups, onAgeGroupToggle, onClear }: AgeGroupFilterProps) {
   return (
     <Card className="relative p-4 space-y-4 rounded-lg border-[1.5px] border-primary/30">
       <div className="flex items-center gap-3">
-        <AlertTriangle className="h-5 w-5 text-primary" />
-        <h2 className="text-2xl font-semibold text-primary">Vaccine Hesitancy</h2>
+        <Clock className="h-5 w-5 text-primary" />
+        <h2 className="text-2xl font-semibold text-primary">Age Groups</h2>
       </div>
       <div className="space-y-3">
-        {hesitancyLevels.map((level) => (
-          <div key={level} className="flex items-center space-x-3">
+        {ageGroups.map((ageGroup) => (
+          <div key={ageGroup} className="flex items-center space-x-3">
             <Checkbox
-              id={level}
-              checked={selectedHesitancy.includes(level)}
-              onCheckedChange={() => onHesitancyToggle(level)}
+              id={`age-${ageGroup}`}
+              checked={selectedAgeGroups.includes(ageGroup)}
+              onCheckedChange={() => onAgeGroupToggle(ageGroup)}
               className="medical-checkbox"
             />
-            <Label 
-              htmlFor={level} 
+            <Label
+              htmlFor={`age-${ageGroup}`}
               className="text-base font-medium"
             >
-              {level}
+              {ageGroup}
             </Label>
           </div>
         ))}
       </div>
-      {selectedHesitancy.length > 0 && (
+      {selectedAgeGroups.length > 0 && (
         <Button
           variant="secondary"
           size="sm"

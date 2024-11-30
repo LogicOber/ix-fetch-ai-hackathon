@@ -14,12 +14,13 @@ import { cn } from "@/lib/utils";
 
 interface RegionFilterProps {
   selectedRegion: Region | null;
-  onRegionSelect: (region: Region | null) => void;
+  onRegionChange: (region: Region | null) => void;
+  disabled?: boolean;
 }
 
-export function RegionFilter({ selectedRegion, onRegionSelect }: RegionFilterProps) {
+export function RegionFilter({ selectedRegion, onRegionChange, disabled }: RegionFilterProps) {
   return (
-    <Card className="p-4 space-y-4 rounded-lg border-[1.5px] border-primary/30">
+    <Card className={`p-4 space-y-4 rounded-lg border-[1.5px] border-primary/30 ${disabled ? 'opacity-50 pointer-events-none' : ''}`}>
       <div className="flex items-center space-x-2">
         <MapPin className="h-5 w-5 text-primary" />
         <h2 className="text-lg font-semibold text-primary">Regions</h2>
@@ -31,7 +32,7 @@ export function RegionFilter({ selectedRegion, onRegionSelect }: RegionFilterPro
           <CommandGroup>
             <CommandItem
               value="all"
-              onSelect={() => onRegionSelect(null)}
+              onSelect={() => onRegionChange(null)}
               className={cn(
                 "cursor-pointer",
                 !selectedRegion 
@@ -45,7 +46,7 @@ export function RegionFilter({ selectedRegion, onRegionSelect }: RegionFilterPro
               <CommandItem
                 key={region}
                 value={region.toLowerCase()}
-                onSelect={() => onRegionSelect(region)}
+                onSelect={() => onRegionChange(region)}
                 className={cn(
                   "cursor-pointer",
                   selectedRegion === region 

@@ -1,11 +1,11 @@
-import { Activity, BarChart2, Users, Settings } from "lucide-react";
+import { Stethoscope, BarChart2, BookOpen, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router-dom";
 
 const navigation = [
-  { name: "Health Board", href: "/health-board", icon: Activity },
+  { name: "Health Board", href: "/health-board", icon: Stethoscope },
   { name: "Social Media Analysis", href: "/social-media-analysis", icon: BarChart2 },
-  { name: "Users", href: "/users", icon: Users },
+  { name: "Story Strategy", href: "/story-strategy", icon: BookOpen },
   { name: "Settings", href: "/settings", icon: Settings },
 ];
 
@@ -17,7 +17,7 @@ export function Sidebar() {
       <div className="flex flex-col h-full">
         <div className="p-4 border-b w-full">
           <div className="flex items-center gap-2">
-            <Activity className="h-6 w-6 text-primary" />
+            <Stethoscope className="h-6 w-6 text-primary" />
             <span className="font-semibold text-lg">NHS Monitor</span>
           </div>
         </div>

@@ -7,7 +7,8 @@ import { HesitancyPanel } from '@/components/health-board/filters/HesitancyPanel
 import { DemographicFilters } from '@/components/health-board/filters/DemographicFilters';
 import { StackedBarChart } from '@/components/health-board/charts/StackedBarChart';
 import { useFilteredData } from '@/hooks/useFilteredData';
-import { Activity } from 'lucide-react';
+import { Stethoscope } from 'lucide-react';
+import { TimeRangeSelector } from '@/components/social/TimeRangeSelector';
 import type { Region, VaccineType, Gender, AgeGroup, HesitancyLevel } from '@/types/health';
 
 export default function HealthBoard() {
@@ -26,18 +27,16 @@ export default function HealthBoard() {
 
   return (
     <DashboardLayout>
-      <div className="min-h-screen">
-        <header className="border-b">
-          <div className="px-6 py-4">
-            <div className="flex items-center gap-2">
-              <Activity className="h-6 w-6 text-primary" />
-              <div>
-                <h1 className="text-2xl font-bold tracking-tight">
-                  NHS Vaccination Dashboard
-                </h1>
-                <p className="text-sm text-gray-600">
-                  Monitor vaccination progress and willingness across England
-                </p>
+      <div className="min-h-screen bg-white">
+        <header className="border-b border-primary/20">
+          <div className="px-8 py-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <Stethoscope className="h-7 w-7 text-primary" />
+                <h1 className="text-2xl font-semibold">NHS Vaccination Dashboard</h1>
+              </div>
+              <div className="opacity-0">
+                <TimeRangeSelector selected="day" onChange={() => {}} />
               </div>
             </div>
           </div>

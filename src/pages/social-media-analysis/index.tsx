@@ -4,7 +4,7 @@ import { BiDirectionalBar } from '@/components/social/BiDirectionalBar';
 import { UserList } from '@/components/social/UserList';
 import { TimeSeriesChart } from '@/components/social/TimeSeriesChart';
 import { mockSocialData } from '@/lib/mock-social-data';
-import { MessageSquare } from 'lucide-react';
+import { BarChart2 } from 'lucide-react';
 import type { TimeRange } from '@/types/social';
 
 export default function SocialMediaAnalysis() {
@@ -26,7 +26,7 @@ export default function SocialMediaAnalysis() {
         <div className="px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <MessageSquare className="h-7 w-7 text-primary" />
+              <BarChart2 className="h-7 w-7 text-primary" />
               <h1 className="text-2xl font-bold">Social Media Analysis</h1>
             </div>
             <TimeRangeSelector selected={timeRange} onChange={setTimeRange} />

@@ -1,28 +1,9 @@
-import { useEffect } from 'react';
-import { MapContainer, TileLayer, Circle, Tooltip, GeoJSON, useMap } from 'react-leaflet';
+import { useEffect, useState } from 'react';
+import { MapContainer, TileLayer, Circle, Tooltip, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import type { VaccinationData, Region, VaccineType, HesitancyLevel } from '@/types/health';
 import { Card } from '@/components/ui/card';
-import englandGeoJson from '@/lib/england.json';
 import { HESITANCY_COLORS } from '@/lib/constants';
-
-interface GeoJSONFeature {
-  type: 'Feature';
-  properties: {
-    name: string;
-    code: string;
-    region: string;
-  };
-  geometry: {
-    type: string;
-    coordinates: number[][][];
-  };
-}
-
-interface EnglandGeoJSON {
-  type: 'FeatureCollection';
-  features: GeoJSONFeature[];
-}
 
 interface MapControllerProps {
   selectedRegion: Region | null;
@@ -61,6 +42,15 @@ export function VaccinationMap({
   selectedHesitancy,
   onRegionSelect
 }: VaccinationMapProps) {
+  const [showLabels, setShowLabels] = useState(false);
+  
+  // 当选择特定区域时，自动显示标签
+  useEffect(() => {
+    if (selectedRegion) {
+      setShowLabels(true);
+    }
+  }, [selectedRegion]);
+  
   const getCircleColor = (willingness: number) => {
     if (willingness >= 75) return '#2563eb';
     if (willingness >= 50) return '#60a5fa';
@@ -68,7 +58,15 @@ export function VaccinationMap({
   };
 
   return (
-    <Card className="w-full h-[600px] overflow-hidden">
+    <Card className="w-full h-[600px] overflow-hidden relative">
+      <div className="absolute top-2 right-2 z-[1000] bg-white rounded-md shadow-lg">
+        <button
+          onClick={() => setShowLabels(!showLabels)}
+          className="px-3 py-1.5 text-sm font-medium text-primary hover:bg-primary/10 rounded-md"
+        >
+          {showLabels ? 'Hide Data' : 'Show Data'}
+        </button>
+      </div>
       <MapContainer
         center={[52.8566, -1.3522]}
         zoom={6}
@@ -82,16 +80,7 @@ export function VaccinationMap({
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <GeoJSON
-          data={englandGeoJson as EnglandGeoJSON}
-          style={{
-            fillColor: 'transparent',
-            weight: 1.5,
-            opacity: 0.8,
-            color: '#2563eb',
-          }}
-        />
-        {data.map((location) => (
+        {showLabels && data.map((location) => (
           <Circle
             key={location.region}
             center={location.coordinates}

@@ -1,4 +1,4 @@
-import { Activity, BarChart2, BookOpen, Settings } from "lucide-react";
+import { Activity, BarChart2, BookOpen, Settings, Mic } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router-dom";
 import { LucideIcon } from 'lucide-react';
@@ -15,6 +15,7 @@ const navigation: NavigationItem[] = [
   { name: "Health Board", href: "/health-board", icon: Activity },
   { name: "Social Media Analysis", href: "/social-media-analysis", icon: BarChart2 },
   { type: "divider", name: "Strategy Tools" },
+  { name: "Audio Emotion Analysis", href: "/audio-emotion", icon: Mic },
   { name: "Story Strategy", href: "/story-strategy", icon: BookOpen },
   { name: "Settings", href: "/settings", icon: Settings },
 ];
@@ -23,7 +24,7 @@ export function Sidebar() {
   const location = useLocation();
 
   return (
-    <aside className="fixed inset-y-0 left-0 w-60 bg-white border-r">
+    <aside className="h-full bg-white border-r">
       <div className="flex flex-col h-full">
         <div className="p-4 border-b w-full">
           <div className="flex items-center gap-2">

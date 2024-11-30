@@ -17,7 +17,7 @@ export function AgeGroupFilter({ selectedAgeGroups, onAgeGroupToggle, onClear }:
     <Card className="relative p-4 space-y-4 rounded-lg border-[1.5px] border-primary/30">
       <div className="flex items-center gap-3">
         <Clock className="h-5 w-5 text-primary" />
-        <h2 className="text-2xl font-semibold text-primary">Age Groups</h2>
+        <h2 className="text-lg font-semibold text-primary">Age Groups</h2>
       </div>
       <div className="space-y-3">
         {ageGroups.map((ageGroup) => (
@@ -30,7 +30,7 @@ export function AgeGroupFilter({ selectedAgeGroups, onAgeGroupToggle, onClear }:
             />
             <Label
               htmlFor={`age-${ageGroup}`}
-              className="text-base font-medium"
+              className="text-sm font-medium"
             >
               {ageGroup}
             </Label>

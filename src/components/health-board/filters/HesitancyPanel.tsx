@@ -17,7 +17,7 @@ export function HesitancyPanel({ selectedHesitancy, onHesitancyToggle, onClear }
     <Card className="relative p-4 space-y-4 rounded-lg border-[1.5px] border-primary/30">
       <div className="flex items-center gap-3">
         <AlertTriangle className="h-5 w-5 text-primary" />
-        <h2 className="text-2xl font-semibold text-primary">Vaccine Hesitancy</h2>
+        <h2 className="text-lg font-semibold text-primary">Vaccine Hesitancy</h2>
       </div>
       <div className="space-y-3">
         {hesitancyLevels.map((level) => (
@@ -30,7 +30,7 @@ export function HesitancyPanel({ selectedHesitancy, onHesitancyToggle, onClear }
             />
             <Label 
               htmlFor={level} 
-              className="text-base font-medium"
+              className="text-sm font-medium"
             >
               {level}
             </Label>

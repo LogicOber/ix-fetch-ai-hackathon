@@ -28,7 +28,7 @@ export function HesitancyPanel({ selectedHesitancy, onHesitancyToggle }: Hesitan
             />
             <Label 
               htmlFor={level} 
-              className="text-sm font-medium cursor-pointer text-foreground"
+              className="text-lg font-semibold text-foreground cursor-pointer"
             >
               {level}
             </Label>

@@ -36,7 +36,7 @@ export function DemographicFilters({
               />
               <Label 
                 htmlFor={gender} 
-                className="text-sm font-medium cursor-pointer text-foreground"
+                className="text-sm font-medium text-foreground cursor-pointer"
               >
                 {gender}
               </Label>
@@ -61,7 +61,7 @@ export function DemographicFilters({
               />
               <Label 
                 htmlFor={ageGroup} 
-                className="text-sm font-medium cursor-pointer text-foreground"
+                className="text-sm font-medium text-foreground cursor-pointer"
               >
                 {ageGroup}
               </Label>

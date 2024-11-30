@@ -28,7 +28,7 @@ export function FilterPanel({ selectedVaccines, onVaccineToggle }: FilterPanelPr
             />
             <Label 
               htmlFor={vaccine} 
-              className="text-sm font-medium cursor-pointer text-foreground"
+              className="text-sm font-medium text-foreground cursor-pointer"
             >
               {vaccine}
             </Label>

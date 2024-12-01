@@ -70,7 +70,7 @@ export function VaccinationMap({
       <MapContainer
         center={[52.8566, -1.3522]}
         zoom={6}
-        className="w-full h-full"
+        className="w-full h-full [&_.leaflet-pane]:!z-[1] [&_.leaflet-top]:!z-[2] [&_.leaflet-bottom]:!z-[2]"
         minZoom={5}
         maxZoom={12}
         maxBounds={[[49.8, -6.3], [55.8, 1.8]]}

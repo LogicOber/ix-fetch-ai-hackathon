@@ -14,9 +14,9 @@ const navigation: NavigationItem[] = [
   { type: "divider", name: "AI Analysis Dashboard" },
   { name: "Health Board", href: "/health-board", icon: Activity },
   { name: "Social Media Analysis", href: "/social-media-analysis", icon: BarChart2 },
-  { type: "divider", name: "AI Sentiment Tools" },
-  { name: "Audio Emotion Analysis", href: "/audio-emotion", icon: Mic },
-  { name: "Analysis History", href: "/story-strategy", icon: History },
+  { type: "divider", name: "AI Journey Mapping" },
+  { name: "Record Mapping", href: "/audio-emotion", icon: Mic },
+  { name: "Mapping History", href: "/analysis-history", icon: History },
   { name: "Settings", href: "/settings", icon: Settings },
 ];
 

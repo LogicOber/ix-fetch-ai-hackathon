@@ -72,15 +72,24 @@ export const DateRangeSelector = memo(({
 
   return (
     <div className="flex items-center gap-2">
+      {date && (
+        <Button
+          variant="outline"
+          size="sm"
+          className="h-8 text-xs font-medium text-muted-foreground hover:text-primary-foreground"
+          onClick={handleClear}
+        >
+          Clear
+        </Button>
+      )}
       <Popover>
         <PopoverTrigger asChild>
           <Button
             variant="outline"
             className={cn(
-              "min-w-[240px] justify-start text-left font-normal",
+              "w-[280px] justify-start text-left font-normal hover:text-primary-foreground",
               !date && "text-muted-foreground"
             )}
-            aria-label="Select date range"
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
             {date?.from ? (
@@ -97,22 +106,23 @@ export const DateRangeSelector = memo(({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-auto p-0"
-          align="start"
+          className="w-fit p-0"
+          align="end"
+          alignOffset={0}
           sideOffset={5}
           role="dialog"
           aria-label="Date range selector"
         >
-          <div className="space-y-4 p-4">
+          <div className="p-4 w-[280px]">
             {/* Preset Ranges */}
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-2 gap-2 mb-4">
               {presetRanges.map((preset) => (
                 <Button
                   key={preset.label}
                   variant="outline"
                   size="sm"
                   onClick={() => handlePresetSelect(preset)}
-                  className="h-8 w-full text-xs font-medium"
+                  className="h-8 text-xs font-medium hover:text-white"
                 >
                   {preset.label}
                 </Button>
@@ -120,27 +130,20 @@ export const DateRangeSelector = memo(({
             </div>
 
             {/* Date Range Display */}
-            <div className="grid grid-cols-2 gap-4 rounded-lg border bg-muted/20 p-3">
-              <div>
+            <div className="flex flex-col gap-4 mb-4">
+              <div className="rounded-lg border bg-muted/20 p-3">
                 <div className="text-xs text-muted-foreground">From</div>
                 <div className="mt-1 font-medium">
                   {date?.from ? formatDate(date.from) : "Pick start date"}
                 </div>
               </div>
-              <div>
+              <div className="rounded-lg border bg-muted/20 p-3">
                 <div className="text-xs text-muted-foreground">To</div>
                 <div className="mt-1 font-medium">
                   {date?.to ? formatDate(date.to) : "Pick end date"}
                 </div>
               </div>
             </div>
-
-            {/* Selection Status */}
-            {date?.from && !date.to && (
-              <div className="rounded-md bg-primary/10 p-2 text-xs font-medium text-primary">
-                Now select the end date
-              </div>
-            )}
 
             {/* Calendar */}
             <div className="rounded-md border">
@@ -155,24 +158,9 @@ export const DateRangeSelector = memo(({
                 fromDate={minDate}
                 toDate={maxDate}
                 fixedWeeks
-                showWeekNumber
-                className="w-full"
+                className="block"
               />
             </div>
-
-            {/* Clear Button */}
-            {date && (
-              <div className="flex justify-end">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={handleClear}
-                  className="h-8 text-xs font-medium text-muted-foreground hover:text-foreground"
-                >
-                  Clear dates
-                </Button>
-              </div>
-            )}
           </div>
         </PopoverContent>
       </Popover>

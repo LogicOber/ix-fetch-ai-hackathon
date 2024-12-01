@@ -303,7 +303,7 @@ export function TreatmentStrategy({ hesitationPoints }: TreatmentStrategyProps) 
     <div className="space-y-6">
       {/* 录音分析结果 */}
       <Card className="p-6">
-        <h2 className="text-xl font-semibold mb-4">疫苗犹豫时间节点分析</h2>
+        <h2 className="text-xl font-semibold mb-4">Analysis of Vaccine Hesitancy Timelines</h2>
         <div className="space-y-4">
           {hesitationPoints.map((point, index) => (
             <div key={index} className="flex gap-3 p-3 rounded-lg bg-orange-50">

@@ -15,7 +15,7 @@ function App() {
           <Route path="/health-board" element={<HealthBoard />} />
           <Route path="/social-media-analysis" element={<SocialMediaAnalysis />} />
           <Route path="/audio-emotion" element={<AudioEmotion />} />
-          <Route path="/story-strategy" element={<StoryStrategy />} />
+          <Route path="/analysis-history" element={<StoryStrategy />} />
         </Routes>
       </DashboardLayout>
     </Router>

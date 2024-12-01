@@ -18,8 +18,6 @@ export default function HealthBoard() {
   const [selectedHesitancy, setSelectedHesitancy] = useState<HesitancyLevel[]>([...hesitancyLevels]);
   const [selectedGenders, setSelectedGenders] = useState<Gender[]>([]);
   const [selectedAgeGroups, setSelectedAgeGroups] = useState<AgeGroup[]>([]);
-
-  // 检查是否应该禁用疫苗选择和地区选择
   const shouldDisableVaccines = selectedGenders.length > 0 || selectedAgeGroups.length > 0;
   const shouldDisableRegions = selectedGenders.length > 0 || selectedAgeGroups.length > 0;
 

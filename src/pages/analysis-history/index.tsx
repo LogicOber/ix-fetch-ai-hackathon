@@ -184,12 +184,14 @@ export default function AnalysisHistory() {
               <History className="h-7 w-7 text-primary" />
               <h1 className="text-2xl font-semibold">Analysis History</h1>
             </div>
-            <DateRangeSelector
-              date={dateRange}
-              onSelect={setDateRange}
-              minDate={subMonths(new Date(), 12)}
-              maxDate={new Date()}
-            />
+            {!selectedRecord && (
+              <DateRangeSelector
+                date={dateRange}
+                onSelect={setDateRange}
+                minDate={subMonths(new Date(), 12)}
+                maxDate={new Date()}
+              />
+            )}
           </div>
           {filteredRecords.length === 0 && dateRange && (
             <p className="text-sm text-muted-foreground mt-2">

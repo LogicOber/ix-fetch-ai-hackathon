@@ -2,7 +2,10 @@ import { HESITANCY_COLORS } from '@/lib/constants';
 
 interface ChartTooltipProps {
   active?: boolean;
-  payload?: any[];
+  payload?: Array<{
+    dataKey: keyof typeof HESITANCY_COLORS;
+    value: number;
+  }>;
   label?: string;
 }
 

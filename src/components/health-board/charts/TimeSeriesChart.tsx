@@ -18,6 +18,18 @@ interface TimeSeriesChartProps {
   data: TimeSeriesData[];
 }
 
+interface TooltipPayload {
+  name?: string;
+  dataKey?: keyof typeof HESITANCY_COLORS;
+  value: number;
+}
+
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: TooltipPayload[];
+  label?: string;
+}
+
 export function TimeSeriesChart({ data }: TimeSeriesChartProps) {
   const formattedData = useMemo(() => {
     return data.map(item => {
@@ -38,7 +50,7 @@ export function TimeSeriesChart({ data }: TimeSeriesChartProps) {
     });
   }, [data]);
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
     if (active && payload && payload.length) {
       const totalCases = payload.find(p => p.name === 'Total Cases')?.value || 0;
       const deaths = payload.find(p => p.name === 'Deaths')?.value || 0;

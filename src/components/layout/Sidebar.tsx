@@ -1,4 +1,4 @@
-import { LayoutDashboard, MessageSquare, Mic, History, LucideIcon } from "lucide-react";
+import { LayoutDashboard, BarChart2, Mic, History, LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router-dom";
 import { UserProfile } from "./UserProfile";
@@ -13,7 +13,7 @@ type NavigationItem = {
 const navigation: NavigationItem[] = [
   { type: "divider", name: "AI Analysis Dashboard" },
   { name: "Health Board", href: "/health-board", icon: LayoutDashboard },
-  { name: "Social Media Analysis", href: "/social-media-analysis", icon: MessageSquare },
+  { name: "Social Media Analysis", href: "/social-media-analysis", icon: BarChart2 },
   { type: "divider", name: "AI Journey Mapping" },
   { name: "Record Mapping", href: "/audio-emotion", icon: Mic },
   { name: "Mapping History", href: "/analysis-history", icon: History },

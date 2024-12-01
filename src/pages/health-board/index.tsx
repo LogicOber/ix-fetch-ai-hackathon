@@ -8,7 +8,7 @@ import { GenderFilter } from '@/components/health-board/filters/GenderFilter';
 import { AgeGroupFilter } from '@/components/health-board/filters/AgeGroupFilter';
 import { StackedBarChart } from '@/components/health-board/charts/StackedBarChart';
 import { useFilteredData } from '@/hooks/useFilteredData';
-import { Activity } from 'lucide-react';
+import { LayoutDashboard } from 'lucide-react';
 import type { Region, VaccineType, Gender, AgeGroup, HesitancyLevel } from '@/types/health';
 import { hesitancyLevels } from '@/lib/mock-data';
 
@@ -40,7 +40,7 @@ export default function HealthBoard() {
         <div className="px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Activity className="h-7 w-7 text-primary" />
+              <LayoutDashboard className="h-7 w-7 text-primary" />
               <h1 className="text-2xl font-semibold">NHS Vaccination Dashboard</h1>
             </div>
             <div className="opacity-0">

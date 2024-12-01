@@ -9,6 +9,8 @@ import { RegisterPage } from "./pages/auth/register";
 import { ConfirmPage } from "./pages/auth/confirm";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
+import BillingPage from "./pages/billing";
+import SubscribePage from "./pages/subscribe";
 import "./App.css";
 
 function App() {
@@ -33,6 +35,8 @@ function App() {
             <Route path="/social-media-analysis" element={<SocialMediaAnalysis />} />
             <Route path="/audio-emotion" element={<AudioEmotion />} />
             <Route path="/analysis-history" element={<StoryStrategy />} />
+            <Route path="/billing" element={<BillingPage />} />
+            <Route path="/subscribe" element={<SubscribePage />} />
           </Route>
         </Routes>
       </AuthProvider>

@@ -1,65 +1,36 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/lib/supabase';
 
 export function ConfirmPage() {
-  const [searchParams] = useSearchParams();
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const type = searchParams.get('type') || 'signup';
 
   useEffect(() => {
-    const token = searchParams.get('token');
-    const email = searchParams.get('email');
-
-    if (!token || !email) {
-      setStatus('error');
-      return;
-    }
-
-    const confirmEmail = async () => {
+    const handlePasswordRecovery = async () => {
       try {
-        if (type === 'signup') {
-          const { error } = await supabase.auth.verifyOtp({
-            token,
-            type: 'signup',
-            email
-          });
-          if (error) throw error;
-          setStatus('success');
-          setTimeout(() => {
-            navigate('/login');
-          }, 3000);
-        } else if (type === 'recovery') {
-          // For password recovery, we don't automatically verify
-          // Instead, we let the user enter a new password
-          setStatus('success');
+        const { data: { user }, error } = await supabase.auth.getUser();
+        
+        if (error || !user) {
+          throw error || new Error('No user found');
         }
+
+        // If we get here, it means the recovery token was valid
+        setStatus('success');
       } catch (error) {
-        console.error('Error confirming email:', error);
+        console.error('Error recovering password:', error);
         setStatus('error');
       }
     };
 
-    confirmEmail();
-  }, [searchParams, navigate, type]);
+    handlePasswordRecovery();
+  }, []);
 
   const handlePasswordReset = async () => {
-    const token = searchParams.get('token');
-    const email = searchParams.get('email');
-
-    if (!token || !email || !password) {
-      setStatus('error');
-      return;
-    }
-
     try {
-      const { error } = await supabase.auth.verifyOtp({
-        token,
-        type: 'recovery',
-        email,
-        password
+      const { error } = await supabase.auth.updateUser({ 
+        password: password 
       });
 
       if (error) throw error;
@@ -80,26 +51,15 @@ export function ConfirmPage() {
         {status === 'loading' && (
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Verifying your email...
+              Verifying your request...
             </h2>
             <p className="text-gray-600">
-              Please wait while we confirm your email address.
+              Please wait while we verify your request.
             </p>
           </div>
         )}
 
-        {status === 'success' && type === 'signup' && (
-          <div>
-            <h2 className="text-2xl font-bold text-green-600 mb-4">
-              Email Verified Successfully!
-            </h2>
-            <p className="text-gray-600">
-              Your email has been verified. You will be redirected to the login page shortly.
-            </p>
-          </div>
-        )}
-
-        {status === 'success' && type === 'recovery' && (
+        {status === 'success' && !password && (
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-blue-600 mb-4">
               Set New Password
@@ -111,15 +71,27 @@ export function ConfirmPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all"
                 placeholder="Enter new password"
+                minLength={6}
               />
               <button
                 onClick={handlePasswordReset}
-                disabled={!password}
+                disabled={!password || password.length < 6}
                 className="mt-4 w-full px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium text-sm"
               >
                 Reset Password
               </button>
             </div>
+          </div>
+        )}
+
+        {status === 'success' && password && (
+          <div>
+            <h2 className="text-2xl font-bold text-green-600 mb-4">
+              Password Reset Successfully!
+            </h2>
+            <p className="text-gray-600">
+              Your password has been reset. You will be redirected to the login page shortly.
+            </p>
           </div>
         )}
 
@@ -129,7 +101,7 @@ export function ConfirmPage() {
               Verification Failed
             </h2>
             <p className="text-gray-600">
-              We couldn't verify your email. The link might be expired or invalid.
+              We couldn't verify your request. The link might be expired or invalid.
               Please try again or contact support if the problem persists.
             </p>
             <button

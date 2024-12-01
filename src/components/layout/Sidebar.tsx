@@ -2,6 +2,7 @@ import { LayoutDashboard, BarChart2, Mic, History, LucideIcon } from "lucide-rea
 import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router-dom";
 import { UserProfile } from "./UserProfile";
+import modernaLogo from '@/assets/images/moderna-logo.png';
 
 type NavigationItem = {
   name: string;
@@ -24,10 +25,10 @@ export function Sidebar() {
 
   return (
     <aside className="flex flex-col h-full bg-white border-r">
-      <div className="p-4 border-b w-full">
-        <div className="flex items-center gap-2">
-          <LayoutDashboard className="h-6 w-6 text-primary" />
-          <span className="font-semibold text-lg">NHS Monitor</span>
+      <div className="p-6 border-b w-full">
+        <div className="flex items-center gap-3">
+          <img src={modernaLogo} alt="Moderna" className="h-12 w-12 object-contain" />
+          <span className="font-semibold text-xl">Moderna AI</span>
         </div>
       </div>
       <nav className="flex-1 p-2">

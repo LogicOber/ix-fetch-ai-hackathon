@@ -41,7 +41,7 @@ export default function HealthBoard() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <LayoutDashboard className="h-7 w-7 text-primary" />
-              <h1 className="text-2xl font-semibold">NHS Vaccination Dashboard</h1>
+              <h1 className="text-2xl font-semibold">I-X Vaccination Dashboard</h1>
             </div>
             <div className="opacity-0">
               <TimeRangeSelector selected="day" onChange={() => {}} />

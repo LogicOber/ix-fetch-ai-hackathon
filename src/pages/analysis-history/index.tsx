@@ -182,16 +182,16 @@ export default function AnalysisHistory() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <History className="h-7 w-7 text-primary" />
-              <h1 className="text-2xl font-semibold">Analysis History</h1>
+              <h1 className="text-2xl font-bold">Analysis History</h1>
             </div>
-            {!selectedRecord && (
+            <div className={selectedRecord ? 'opacity-0' : ''}>
               <DateRangeSelector
                 date={dateRange}
                 onSelect={setDateRange}
                 minDate={subMonths(new Date(), 12)}
                 maxDate={new Date()}
               />
-            )}
+            </div>
           </div>
           {filteredRecords.length === 0 && dateRange && (
             <p className="text-sm text-muted-foreground mt-2">

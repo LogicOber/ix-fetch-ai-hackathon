@@ -12,13 +12,11 @@ export default function SocialMediaAnalysis() {
 
   const positiveUsers = mockSocialData.users
     .filter(user => user.sentiment === 'positive')
-    .sort((a, b) => b.influenceScore - a.influenceScore)
-    .slice(0, 10);
+    .sort((a, b) => b.influenceScore - a.influenceScore);
   
   const negativeUsers = mockSocialData.users
     .filter(user => user.sentiment === 'negative')
-    .sort((a, b) => b.influenceScore - a.influenceScore)
-    .slice(0, 10);
+    .sort((a, b) => b.influenceScore - a.influenceScore);
 
   return (
     <div className="min-h-screen">
@@ -76,11 +74,11 @@ export default function SocialMediaAnalysis() {
           <div className="grid grid-cols-2 gap-12">
             <div className="space-y-4">
               <h2 className="text-lg font-semibold text-green-600 px-4">Top Positive Influencers</h2>
-              <UserList users={positiveUsers} type="positive" />
+              <UserList users={positiveUsers} />
             </div>
             <div className="space-y-4">
               <h2 className="text-lg font-semibold text-red-600 px-4">Top Negative Influencers</h2>
-              <UserList users={negativeUsers} type="negative" />
+              <UserList users={negativeUsers} />
             </div>
           </div>
         </div>

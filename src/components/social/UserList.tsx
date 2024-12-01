@@ -11,17 +11,16 @@ import type { SocialUser } from "@/types/social";
 
 interface UserListProps {
   users: SocialUser[];
-  type: "positive" | "negative";
 }
 
-export function UserList({ users, type }: UserListProps) {
+export function UserList({ users }: UserListProps) {
   return (
     <Card className="p-4">
       <div className="space-y-4">
-        <div className="grid grid-cols-[1fr_1fr_100px] gap-4 text-sm font-medium text-gray-500">
-          <span>Name</span>
-          <span>Handle</span>
-          <span className="text-right">Score</span>
+        <div className="grid grid-cols-[1fr_1fr_100px] gap-4 text-sm font-medium text-gray-500 px-3">
+          <span className="font-medium">Name</span>
+          <span className="font-medium text-left">Handle</span>
+          <span className="font-medium text-left">Score</span>
         </div>
         <ScrollArea className="h-[400px] pr-4">
           <div className="space-y-2">
@@ -33,11 +32,11 @@ export function UserList({ users, type }: UserListProps) {
                       className="grid grid-cols-[1fr_1fr_100px] gap-4 items-center py-2 px-3 border-b border-gray-100 last:border-0 hover:bg-gray-50 rounded-lg cursor-pointer"
                     >
                       <span className="font-medium">{user.name}</span>
-                      <span className="text-primary">{user.handle}</span>
-                      <div className="text-right">
+                      <span className="text-primary text-left">{user.handle}</span>
+                      <div className="text-left">
                         <span className={cn(
                           "font-medium",
-                          type === "positive" ? "text-green-600" : "text-red-600"
+                          user.sentiment === "positive" ? "text-green-600" : "text-red-600"
                         )}>
                           {user.influenceScore}/100
                         </span>

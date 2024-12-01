@@ -95,70 +95,182 @@ export const mockSocialData: SocialData = {
     {
       name: "Sarah Johnson",
       handle: "@sarahj_health",
-      influenceScore: 88,
+      influenceScore: 92,
       sentiment: "positive",
       tweets: generateTweets('positive')
     },
     {
-      name: "Dr. Michael Chen",
-      handle: "@dr_chen_med",
-      influenceScore: 84,
+      name: "David Chen",
+      handle: "@dchen_med",
+      influenceScore: 88,
       sentiment: "positive",
       tweets: generateTweets('positive')
     },
     {
       name: "Emma Williams",
-      handle: "@emma_wellness",
-      influenceScore: 82,
+      handle: "@emma_healthcare",
+      influenceScore: 85,
       sentiment: "positive",
       tweets: generateTweets('positive')
     },
     {
-      name: "James Wilson",
-      handle: "@jwilson_health",
-      influenceScore: 70,
+      name: "Lisa Anderson",
+      handle: "@lisa_health",
+      influenceScore: 78,
       sentiment: "positive",
       tweets: generateTweets('positive')
     },
     {
-      name: "Lisa Brown",
-      handle: "@lisa_healthcare",
+      name: "Rachel Lee",
+      handle: "@rlee_medical",
+      influenceScore: 75,
+      sentiment: "positive",
+      tweets: generateTweets('positive')
+    },
+    {
+      name: "Sophie Turner",
+      handle: "@sturner_nhs",
+      influenceScore: 72,
+      sentiment: "positive",
+      tweets: generateTweets('positive')
+    },
+    {
+      name: "Jennifer Smith",
+      handle: "@jsmith_care",
+      influenceScore: 89,
+      sentiment: "positive",
+      tweets: generateTweets('positive')
+    },
+    {
+      name: "Mark Davis",
+      handle: "@mdavis_health",
+      influenceScore: 86,
+      sentiment: "positive",
+      tweets: generateTweets('positive')
+    },
+    {
+      name: "Alice Cooper",
+      handle: "@acooper_med",
+      influenceScore: 83,
+      sentiment: "positive",
+      tweets: generateTweets('positive')
+    },
+    {
+      name: "Peter Zhang",
+      handle: "@pzhang_health",
+      influenceScore: 81,
+      sentiment: "positive",
+      tweets: generateTweets('positive')
+    },
+    {
+      name: "Laura White",
+      handle: "@lwhite_care",
+      influenceScore: 77,
+      sentiment: "positive",
+      tweets: generateTweets('positive')
+    },
+    {
+      name: "Kevin Brown",
+      handle: "@kbrown_health",
+      influenceScore: 74,
+      sentiment: "positive",
+      tweets: generateTweets('positive')
+    },
+    {
+      name: "Maria Garcia",
+      handle: "@mgarcia_med",
+      influenceScore: 71,
+      sentiment: "positive",
+      tweets: generateTweets('positive')
+    },
+    {
+      name: "Chris Wilson",
+      handle: "@cwilson_care",
       influenceScore: 69,
       sentiment: "positive",
       tweets: generateTweets('positive')
     },
     {
-      name: "Robert Smith",
-      handle: "@rob_smith",
-      influenceScore: 88,
+      name: "Michael Brown",
+      handle: "@mbrown_nhs",
+      influenceScore: 82,
       sentiment: "negative",
       tweets: generateTweets('negative')
     },
     {
-      name: "Anna Martinez",
-      handle: "@anna_m",
+      name: "James Wilson",
+      handle: "@jwilson_doc",
+      influenceScore: 76,
+      sentiment: "negative",
+      tweets: generateTweets('negative')
+    },
+    {
+      name: "Thomas Clark",
+      handle: "@tclark_health",
+      influenceScore: 74,
+      sentiment: "negative",
+      tweets: generateTweets('negative')
+    },
+    {
+      name: "Robert Taylor",
+      handle: "@rtaylor_med",
+      influenceScore: 71,
+      sentiment: "negative",
+      tweets: generateTweets('negative')
+    },
+    {
+      name: "Richard Lee",
+      handle: "@rlee_critic",
+      influenceScore: 87,
+      sentiment: "negative",
+      tweets: generateTweets('negative')
+    },
+    {
+      name: "Sarah Miller",
+      handle: "@smiller_watch",
       influenceScore: 84,
       sentiment: "negative",
       tweets: generateTweets('negative')
     },
     {
-      name: "David Lee",
-      handle: "@david_lee",
-      influenceScore: 82,
+      name: "Daniel Park",
+      handle: "@dpark_health",
+      influenceScore: 80,
       sentiment: "negative",
       tweets: generateTweets('negative')
     },
     {
-      name: "Rachel Green",
-      handle: "@rachel_g",
+      name: "Emily Rogers",
+      handle: "@erogers_med",
+      influenceScore: 77,
+      sentiment: "negative",
+      tweets: generateTweets('negative')
+    },
+    {
+      name: "Andrew Thompson",
+      handle: "@athompson_nhs",
+      influenceScore: 75,
+      sentiment: "negative",
+      tweets: generateTweets('negative')
+    },
+    {
+      name: "Jessica Chen",
+      handle: "@jchen_health",
+      influenceScore: 73,
+      sentiment: "negative",
+      tweets: generateTweets('negative')
+    },
+    {
+      name: "Paul Martinez",
+      handle: "@pmartinez_care",
       influenceScore: 70,
       sentiment: "negative",
       tweets: generateTweets('negative')
     },
     {
-      name: "Tom Anderson",
-      handle: "@tom_anderson",
-      influenceScore: 69,
+      name: "Karen White",
+      handle: "@kwhite_health",
+      influenceScore: 68,
       sentiment: "negative",
       tweets: generateTweets('negative')
     }

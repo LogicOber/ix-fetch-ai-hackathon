@@ -1,4 +1,4 @@
-import { Activity, BarChart2, BookOpen, Settings, Mic } from "lucide-react";
+import { Activity, BarChart2, History, Settings, Mic } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router-dom";
 import { LucideIcon } from 'lucide-react';
@@ -14,9 +14,9 @@ const navigation: NavigationItem[] = [
   { type: "divider", name: "AI Analysis Dashboard" },
   { name: "Health Board", href: "/health-board", icon: Activity },
   { name: "Social Media Analysis", href: "/social-media-analysis", icon: BarChart2 },
-  { type: "divider", name: "Strategy Tools" },
+  { type: "divider", name: "AI Sentiment Tools" },
   { name: "Audio Emotion Analysis", href: "/audio-emotion", icon: Mic },
-  { name: "Story Strategy", href: "/story-strategy", icon: BookOpen },
+  { name: "Analysis History", href: "/story-strategy", icon: History },
   { name: "Settings", href: "/settings", icon: Settings },
 ];
 

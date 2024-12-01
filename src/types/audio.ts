@@ -10,4 +10,6 @@ export interface AudioAnalysis {
   fileName: string;
   duration: number;      // Total duration in seconds
   emotionData: EmotionPoint[];
+  hesitationPoints: EmotionPoint[];  // Points where hesitation is detected
+  summary?: string;      // Overall analysis summary
 }

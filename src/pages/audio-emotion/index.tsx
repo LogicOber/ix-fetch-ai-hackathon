@@ -3,12 +3,13 @@ import { Card } from '@/components/ui/card';
 import { Mic } from 'lucide-react';
 import { AudioUploader } from '@/components/audio/AudioUploader';
 import { EmotionChart } from '@/components/audio/EmotionChart';
-import { mockAudioAnalysis, emptyAudioAnalysis } from '@/lib/mock-audio-data';
+import { TreatmentStrategy } from '@/components/audio/TreatmentStrategy';
+import { mockAudioAnalysis } from '@/lib/mock-audio-data';
 import type { AudioAnalysis } from '@/types/audio';
 import { TimeRangeSelector } from '@/components/social/TimeRangeSelector';
 
 export default function AudioEmotion() {
-  const [analysis, setAnalysis] = useState<AudioAnalysis>(emptyAudioAnalysis);
+  const [analysis, setAnalysis] = useState<AudioAnalysis>(mockAudioAnalysis);
 
   const handleFileSelect = (file: File) => {
     // In a real application, we would upload the file and get analysis from the server
@@ -48,9 +49,13 @@ export default function AudioEmotion() {
                   File: {analysis.fileName}
                 </span>
               </div>
-              <EmotionChart 
-                data={analysis.emotionData}
-              />
+              <div className="space-y-6">
+                <EmotionChart 
+                  data={analysis.emotionData}
+                  hesitationPoints={analysis.hesitationPoints}
+                />
+                <TreatmentStrategy hesitationPoints={analysis.hesitationPoints} />
+              </div>
             </Card>
           )}
         </div>

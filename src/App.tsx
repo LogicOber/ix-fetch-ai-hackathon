@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import HealthBoard from "./pages/health-board";
 import SocialMediaAnalysis from "./pages/social-media-analysis";
-import StoryStrategy from "./pages/story-strategy";
+import StoryStrategy from "./pages/analysis-history";
 import AudioEmotion from "./pages/audio-emotion";
 import { DashboardLayout } from "./components/layout/DashboardLayout";
 import "./App.css";

@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [react()],
+  base: '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -13,9 +14,9 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   server: {
-    host: true, // 监听所有地址
+    host: true,
     port: 8080,
-    strictPort: true, // 端口被占用时抛出错误
+    strictPort: true,
   },
   preview: {
     host: true,

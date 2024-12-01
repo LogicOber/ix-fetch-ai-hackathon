@@ -13,7 +13,7 @@ type NavigationItem = {
 
 const navigation: NavigationItem[] = [
   { type: "divider", name: "AI Analysis Dashboard" },
-  { name: "Health Board", href: "/health-board", icon: LayoutDashboard },
+  { name: "Vaccination Board", href: "/health-board", icon: LayoutDashboard },
   { name: "Social Media Analysis", href: "/social-media-analysis", icon: BarChart2 },
   { type: "divider", name: "AI Journey Mapping" },
   { name: "Record Mapping", href: "/audio-emotion", icon: Mic },

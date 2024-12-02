@@ -1,6 +1,7 @@
 # I-X Team | Fetch.ai x Moderna Hackathon
 
 Youtube Walkthrough 👇
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/o6mBIjPEADA/0.jpg)](https://www.youtube.com/watch?v=o6mBIjPEADA)
 
 
